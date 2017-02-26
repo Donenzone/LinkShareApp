@@ -25,9 +25,11 @@
  } from 'react-native';
  import { Space, SharedItemList, ShareUser, SharedItem } from './spaces.js'
  import { SharedItemWebView } from './webview'
+ import { Login } from './login'
 
- const HOME_ROUTE = { id: 'Space' };
- const SHARED_ITEM_ROUTE = { id: 'Shared Items'};
+ const HOME_ROUTE = { id: 'space' };
+ const LOGIN_ROUTE = { id: 'login' }
+ const SHARED_ITEM_ROUTE = { id: 'sharedItems'};
 
  var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -35,7 +37,7 @@ export default class Nav extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={HOME_ROUTE}
+        initialRoute={LOGIN_ROUTE}
         renderScene={(route, navigator) => {return this.renderScene(route, navigator)}}
         navigationBar={
           <Navigator.NavigationBar
@@ -55,9 +57,11 @@ export default class Nav extends Component {
   }
   renderScene(route, navigator) {
     switch(route.id) {
-      case "Space":
+      case "login":
+       return <Login navigator={navigator} />
+      case "space":
        return <MainView navigator={navigator} />
-      case "SharedItem":
+      case "sharedItems":
        return <SharedItemList navigator={navigator} space_pk={route.space_pk} />
       case "SharedItemWebView":
        return <SharedItemWebView navigator={navigator} uri={route.uri} />

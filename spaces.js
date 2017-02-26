@@ -34,7 +34,7 @@ export class Space extends Component {
            }).done();
       }
    unmountSpace() {
-     this.props.navigator.push({id: 'SharedItem', 'space_pk': this.props.pk})
+     this.props.navigator.push({id: 'sharedItems', 'space_pk': this.props.pk})
    }
    render() {
      return (
@@ -104,7 +104,7 @@ export class Space extends Component {
 
  export class SharedItemListItem extends Component {
    loadWebView() {
-       this.props.navigator.push({id: 'SharedItemWebView', 'uri': this.props.url})
+       this.props.navigator.push({id: 'sharedItemWebView', 'uri': this.props.url})
    }
    render() {
      return (
